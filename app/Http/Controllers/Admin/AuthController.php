@@ -38,4 +38,16 @@ class AuthController extends Controller
             ->with('incorrect', true)
             ->withInput($request->validated());
     }
+
+    /**
+     * Logout
+     *
+     * @return RedirectResponse
+     */
+    public function logout(): RedirectResponse
+    {
+        auth()->guard('web')->logout();
+
+        return redirect()->route('login');
+    }
 }
