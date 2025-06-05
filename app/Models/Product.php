@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
@@ -12,6 +13,8 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property $description
  * @property $price
  * @property $images
+ *
+ * @property-read $default_image
  *
  * @property-read Category $category
  */
@@ -37,5 +40,15 @@ class Product extends Model
     public function category(): HasOne
     {
         return $this->hasOne(Category::class, 'id', 'category_id');
+    }
+
+    /**
+     * Get default_image attribute
+     *
+     * @return Attribute
+     */
+    public function defaultImage(): Attribute
+    {
+        return Attribute::get(fn () => $this->images[0] ?? null);
     }
 }

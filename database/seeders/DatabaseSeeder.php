@@ -15,10 +15,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-//        DB::table('users')->insertOrIgnore([
-//            'id' => 1,
-//            'email' => 'admin@shop.com',
-//            'password' => Hash::make('shop2015'),
-//        ]);
+        DB::table('users')->insertOrIgnore([
+            'id' => 1,
+            'email' => 'admin@shop.com',
+            'password' => Hash::make('shop2015'),
+        ]);
     }
 }

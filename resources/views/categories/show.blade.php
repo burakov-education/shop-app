@@ -20,24 +20,26 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Good</td>
-                    <td>2 499.99 ₽</td>
-                    <td class="text-end">
-                        <div class="btn-group" role="group">
-                            <a href="good.html" type="button" class="btn btn-lg btn-outline-primary no-reverse">
-                                <img src="{{ asset('assets/img/icons/eye.svg') }}" alt="eye" class="action-image">
-                            </a>
-                            <a href="add_good.html" type="button" class="btn btn-lg btn-outline-success no-reverse">
-                                <img src="{{ asset('assets/img/icons/pencil.svg') }}" alt="eye" class="action-image">
-                            </a>
-                            <a href="" type="button" class="btn btn-lg btn-outline-danger no-reverse">
-                                <img src="{{ asset('assets/img/icons/trash.svg') }}" alt="eye" class="action-image">
-                            </a>
-                        </div>
-                    </td>
-                </tr>
+                @foreach($category->products as $product)
+                    <tr>
+                        <td>{{ $product->id }}</td>
+                        <td>{{ $product->name }}</td>
+                        <td>{{ $product->price }} ₽</td>
+                        <td class="text-end">
+                            <div class="btn-group" role="group">
+                                <a href="{{ route('products.show', $product) }}" type="button" class="btn btn-lg btn-outline-primary no-reverse">
+                                    <img src="{{ asset('assets/img/icons/eye.svg') }}" alt="eye" class="action-image">
+                                </a>
+                                <a href="{{ route('products.edit', $product) }}" type="button" class="btn btn-lg btn-outline-success no-reverse">
+                                    <img src="{{ asset('assets/img/icons/pencil.svg') }}" alt="eye" class="action-image">
+                                </a>
+                                <a href="{{ route('products.delete', $product) }}" type="button" class="btn btn-lg btn-outline-danger no-reverse">
+                                    <img src="{{ asset('assets/img/icons/trash.svg') }}" alt="eye" class="action-image">
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>

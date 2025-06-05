@@ -3,7 +3,11 @@
 namespace App\Http\Requests\Admin;
 
 use App\Http\Requests\GeneralRequest;
+use App\Models\Product;
 
+/**
+ * @property Product|null $product
+ */
 class ProductRequest extends GeneralRequest
 {
     /**
@@ -17,7 +21,7 @@ class ProductRequest extends GeneralRequest
             'name' => 'required|string|max:20',
             'description' => 'nullable|string|max:50',
             'price' => 'required|numeric|min:10',
-            'images' => 'required|array|min:1',
+            'images' => ($this->product ? 'nullable' : 'required') . '|array|min:1',
             'images.*' => 'required|image|mimes:jpeg,png,jpg|max:' . (3.5 * 1024),
         ];
     }

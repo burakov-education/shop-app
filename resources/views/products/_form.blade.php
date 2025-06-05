@@ -33,6 +33,7 @@ $product = $product ?? null;
     <label for="productImages" class="form-label">Image(s)</label>
     <input type="file" class="form-control @error('images') is-invalid @enderror" id="productImages" multiple name="images[]">
 
+    <!-- todo: validate -->
     @error('images')
         <div class="invalid-feedback fs-3">{{ $message }}</div>
     @enderror

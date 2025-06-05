@@ -17,7 +17,7 @@
 
         @auth
             <a href="{{ route('categories.index') }}" class="text-primary text-decoration-none">Category</a>
-            <a href="index.html" class="text-primary text-decoration-none">Goods</a>
+            <a href="{{ route('products.index') }}" class="text-primary text-decoration-none">Goods</a>
             <a href="orders.html" class="text-primary text-decoration-none">Orders</a>
             <div>
                 <a href="{{ route('logout') }}" class="login text-decoration-none">Logout</a>

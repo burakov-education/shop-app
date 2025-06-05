@@ -30,7 +30,7 @@
                         <td>{{ $category->id }}</td>
                         <td>{{ $category->name }}</td>
                         <td>{{ $category->description }}</td>
-                        <td>todo</td>
+                        <td>{{ $category->products()->count() }}</td>
                         <td class="text-end">
                             <div class="btn-group" role="group">
                                 <a href="{{ route('categories.show', $category) }}" type="button" class="btn btn-lg btn-outline-primary no-reverse">
@@ -39,9 +39,11 @@
                                 <a href="{{ route('categories.edit', $category) }}" type="button" class="btn btn-lg btn-outline-success no-reverse">
                                     <img src="{{ asset('assets/img/icons/pencil.svg') }}" alt="eye" class="action-image">
                                 </a>
-                                <a href="" type="button" class="btn btn-lg btn-outline-danger no-reverse">
-                                    <img src="{{ asset('assets/img/icons/trash.svg') }}" alt="eye" class="action-image">
-                                </a>
+                                @if ($category->products()->count() === 0)
+                                    <a href="{{ route('categories.delete', $category) }}" type="button" class="btn btn-lg btn-outline-danger no-reverse">
+                                        <img src="{{ asset('assets/img/icons/trash.svg') }}" alt="eye" class="action-image">
+                                    </a>
+                                @endif
                             </div>
                         </td>
                     </tr>

@@ -18,8 +18,14 @@ Route::prefix('/admin')->group(function () {
         Route::get('/categories/{category}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
         Route::post('/categories/{category}/edit', [CategoryController::class, 'update'])->name('categories.update');
         Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
+        Route::get('/categories/{category}/delete', [CategoryController::class, 'delete'])->name('categories.delete');
 
         Route::get('/categories/{category}/products/create', [ProductController::class, 'create'])->name('products.create');
         Route::post('/categories/{category}/products/create', [ProductController::class, 'store'])->name('products.store');
+        Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+        Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
+        Route::post('/products/{product}/edit', [ProductController::class, 'update'])->name('products.update');
+        Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
+        Route::get('/products/{product}/delete', [ProductController::class, 'delete'])->name('products.delete');
     });
 });

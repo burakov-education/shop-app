@@ -82,4 +82,19 @@ class CategoryController extends Controller
 
         return redirect()->route('categories.index');
     }
+
+    /**
+     * Delete category
+     *
+     * @param Category $category
+     * @return RedirectResponse
+     */
+    public function delete(Category $category): RedirectResponse
+    {
+        if ($category->products()->count() === 0) {
+            $category->delete();
+        }
+
+        return redirect()->back();
+    }
 }
